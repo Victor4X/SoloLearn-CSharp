@@ -10,23 +10,43 @@ namespace Conditionals_and_Loops
     {
         private static void Main(string[] args)
         {
-            int num = 3;
+            int num;
+            Console.WriteLine("Press a number between one and three (inclusive)");
+
+            // Get user input (true is to disable echo of the pressed key)
+            ConsoleKeyInfo UserInput = Console.ReadKey(true);
+
+            // Check if the pressed key is a digit
+            if (char.IsDigit(UserInput.KeyChar))
+            {
+                // Convert it to an integer
+                num = int.Parse(UserInput.KeyChar.ToString());
+            }
+            else
+            {
+                num = 0;
+            }
+
             switch (num)
             {
                 case 1:
-                    Console.WriteLine("one");
+                    Console.WriteLine("You pressed \"one\"");
                     break;
 
                 case 2:
-                    Console.WriteLine("two");
+                    Console.WriteLine("You pressed \"two\"");
                     break;
 
                 case 3:
-                    Console.WriteLine("Three");
+                    Console.WriteLine("You pressed \"Three\"");
+                    break;
+
+                default:
+                    Console.WriteLine("That wasn't a number between one and three (inclusive), dumb dumb");
                     break;
             }
 
-            // Debugging tool to prevent instantly closing the console upon program completion
+            // Debugging trick to prevent instantly closing the console upon program completion
             if (System.Diagnostics.Debugger.IsAttached)
             {
                 Console.WriteLine("Press any key to close...");
